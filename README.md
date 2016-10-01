@@ -13,9 +13,6 @@ public bool IsRunningAsUwp()
 }
 ```
 
-The library is available also on NuGet. There are two packages, based on your project's architecture:
+The library is available also on NuGet: https://www.nuget.org/packages/DesktopBridge.Helpers/
 
-- https://www.nuget.org/packages/DesktopBridge.Helpers.x86/ for x86 applications
-- https://www.nuget.org/packages/DesktopBridge.Helpers.x64/ for x64 applications
-
-<b>Important!</b> Since it's a native library, you will need to compile your desktop application for x86 or x64 architecture, you can't use the AnyCPU compilation configuration.
+The library currently supports every application developed with .NET Framework >=4.0
