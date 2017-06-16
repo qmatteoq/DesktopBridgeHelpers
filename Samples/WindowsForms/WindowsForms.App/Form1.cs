@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsForms.App
@@ -22,7 +15,7 @@ namespace WindowsForms.App
         {
             DesktopBridge.Helpers helpers = new DesktopBridge.Helpers();
             bool isUwp = helpers.IsRunningAsUwp();
-            string text = isUwp ? "The app is running inside the UWP container" : "The app is running as a native Win32 app";
+            string text = isUwp ? "The app is running as a Universal Windows Package" : "The app is running as a native Win32 app";
             txtStatus.Text = text;
         }
     }

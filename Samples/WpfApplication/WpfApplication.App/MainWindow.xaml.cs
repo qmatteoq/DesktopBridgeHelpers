@@ -30,7 +30,7 @@ namespace WpfApplication.App
         {
             DesktopBridge.Helpers helpers = new DesktopBridge.Helpers();
             bool isUwp = helpers.IsRunningAsUwp();
-            string text = isUwp ? "The app is running inside the UWP container" : "The app is running as a native Win32 app";
+            string text = isUwp ? "The app is running as a Universal Windows Package" : "The app is running as a native Win32 app";
             Status.Text = text;
         }
     }

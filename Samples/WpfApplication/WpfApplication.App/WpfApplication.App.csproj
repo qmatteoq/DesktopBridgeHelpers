@@ -35,10 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DesktopBridge.Helpers, Version=1.0.6117.22336, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\DesktopBridge.Helpers.1.0.0\lib\dotnet\DesktopBridge.Helpers.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -90,7 +86,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,12 +95,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DesktopBridge.Helpers\DesktopBridge.Helpers.csproj">
+      <Project>{1e4b9f8e-2492-4ac0-b82c-8f9363720712}</Project>
+      <Name>DesktopBridge.Helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
   <Target Name="AfterBuild">
+    <PropertyGroup>
+      <TargetUWP>..\WpfApplication.Package\win32\</TargetUWP>
+    </PropertyGroup>
+    <ItemGroup>
+      <Win32Binaries Include="$(TargetDir)\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Win32Binaries)" DestinationFolder="$(TargetUWP)" />
   </Target>
-  -->
 </Project>

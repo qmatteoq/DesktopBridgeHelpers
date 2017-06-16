@@ -6,31 +6,39 @@ namespace DesktopBridge
 {
     public class Helpers
     {
+        const long APPMODEL_ERROR_NO_PACKAGE = 15700L;
+
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        static extern int GetCurrentPackageFullName(ref int packageFullNameLength, ref StringBuilder packageFullName);
+        static extern int GetCurrentPackageFullName(ref int packageFullNameLength, StringBuilder packageFullName);
 
         public bool IsRunningAsUwp()
         {
-            if (isWindows7OrLower())
+            if (IsWindows7OrLower)
             {
                 return false;
             }
             else
             {
-                StringBuilder sb = new StringBuilder(1024);
                 int length = 0;
-                int result = GetCurrentPackageFullName(ref length, ref sb);
+                StringBuilder sb = new StringBuilder(0);
+                int result = GetCurrentPackageFullName(ref length, sb);
 
-                return result != 15700;
+                sb = new StringBuilder(length);
+                result = GetCurrentPackageFullName(ref length, sb);
+
+                return result != APPMODEL_ERROR_NO_PACKAGE;
             }
         }
 
-        private bool isWindows7OrLower()
+        private bool IsWindows7OrLower
         {
-            int versionMajor = Environment.OSVersion.Version.Major;
-            int versionMinor = Environment.OSVersion.Version.Minor;
-            double version = versionMajor + (double)versionMinor / 10;
-            return version <= 6.1;
+            get
+            {
+                int versionMajor = Environment.OSVersion.Version.Major;
+                int versionMinor = Environment.OSVersion.Version.Minor;
+                double version = versionMajor + (double)versionMinor / 10;
+                return version <= 6.1;
+            }
         }
     }
 }
