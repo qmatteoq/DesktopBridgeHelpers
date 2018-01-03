@@ -18,7 +18,7 @@ The repository contains also a sample for eery major .NET desktop technology:
 - WPF
 - Console application
 
-<b>Important!</b> The sample projects are based on [Visual Studio 15 Preview](https://www.visualstudio.com/visual-studio-pre-release-downloads/) and the [Desktop Bridge extension](http://go.microsoft.com/fwlink/?LinkId=797871)
+<b>Important!</b> The sample projects are based on the Windows Application Packaging Project, which has been added starting from Visual Studio 2017 Update 4
 
 The library is available also on NuGet: https://www.nuget.org/packages/DesktopBridge.Helpers/
 
